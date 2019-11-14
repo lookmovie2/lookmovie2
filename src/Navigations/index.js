@@ -24,7 +24,12 @@ const MainNavigator = createStackNavigator(
     Search: SearchScreen,
     MovieSearch: MovieSearch,
     TVSearch: TVSearch,
-    Play: PlayScreen,
+    Play: {
+      screen: PlayScreen,
+      navigationOptions: {
+        header: null,
+      },
+    },
     TVPlay: TvShowScreen,
     Youtube: YoutubePlayScreen,
   },

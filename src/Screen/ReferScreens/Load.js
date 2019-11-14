@@ -37,15 +37,21 @@ class Load extends Component {
   }
 
   bootstrapAsync = async () => {
-    const dispatch = this.props.dispatch;
-    await Promise.all([
-      dispatch(get_mv_treding()),
-      dispatch(get_mv_latest()),
-      dispatch(get_mv_genres()),
-      dispatch(get_tv_latest()),
-      dispatch(get_tv_treding()),
-    ]);
-    this.props.navigation.navigate('Draw');
+    try {
+      const dispatch = this.props.dispatch;
+
+      await Promise.all([
+        dispatch(get_mv_treding()),
+        dispatch(get_mv_latest()),
+        dispatch(get_mv_genres()),
+        dispatch(get_tv_latest()),
+        dispatch(get_tv_treding()),
+      ]);
+      this.props.navigation.navigate('Draw');
+    } catch (error) {
+      console.log(error);
+      this.bootstrapAsync();
+    }
   };
 
   render() {

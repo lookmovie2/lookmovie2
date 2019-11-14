@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Platform, Dimensions, BackHandler} from 'react-native';
+import {Platform, Dimensions, BackHandler, Alert} from 'react-native';
 import Orientation from 'react-native-orientation-locker';
 import ProgressScreen from '../../ReferScreens/ProgressScreen';
 import API from '../../../config/api';
@@ -34,11 +34,7 @@ export default class index extends Component {
     };
   }
 
-  async componentDidMount() {
-    this.backHandler = BackHandler.addEventListener(
-      'hardwareBackPress',
-      this.handleBackPress,
-    );
+  componentDidMount() {
     return fetch(API.tvShow + this.props.navigation.state.params.slug)
       .then(response => response.json())
       .then(responseJson => {
@@ -129,20 +125,12 @@ export default class index extends Component {
         }
       })
       .catch(error => {
+        // this.setState({
+        //   isLoading: false,
+        // });
         console.error(error);
       });
   }
-
-  componentWillUnmount() {
-    this.backHandler.remove();
-  }
-
-  handleBackPress = () => {
-    // this.goBack(); // works best when the goBack is async
-    this.props.navigation.pop();
-    Orientation.lockToPortrait();
-    return true;
-  };
 
   render() {
     if (this.state.isLoading) {

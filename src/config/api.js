@@ -42,7 +42,7 @@ const api = {
   root_track: 'https://fe4.lookmovie.ag',
 
   //tv screen
-  tvShow: 'http://lookmovie.ag/web-api/v1/shows/view?slug=',
+  tvShow: 'https://lookmovie.ag/web-api/v1/shows/view?slug=',
   tv_tokenExpires: 'https://lookmovie.ag/web-api/v1/shows/storage?id_show=',
   show_stream: 'https://lookmovie.ag/manifests/shows/',
   show_subtitle:

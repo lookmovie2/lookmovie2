@@ -8,6 +8,7 @@ import {
   Dimensions,
   ActivityIndicator,
   TouchableWithoutFeedback,
+  Linking,
 } from 'react-native';
 import {Slider} from 'react-native-elements';
 import {Picker} from 'native-base';
@@ -23,8 +24,8 @@ import Orientation from 'react-native-orientation-locker';
 import Video from 'react-native-video';
 import {StatusBar} from 'react-native';
 
-const screenWidth = Math.round(Dimensions.get('window').width);
-const screenHeight = Math.round(Dimensions.get('window').height);
+const screenWidth = Math.round(Dimensions.get('screen').width);
+const screenHeight = Math.round(Dimensions.get('screen').height);
 
 class CastItem extends PureComponent {
   render() {
@@ -259,11 +260,21 @@ export default class AndroidVideo extends Component {
 
   playYoutube = () => {
     this.setState({paused: true});
-    this.props.navigation.navigate('Youtube', {
-      youtubeId: this.state.meta.youtube,
-      youtubeTitle: this.state.meta.title,
-      youtubeDesc: this.state.meta.description,
-    });
+    // this.props.navigation.navigate('Youtube', {
+    //   youtubeId: this.state.meta.youtube,
+    //   youtubeTitle: this.state.meta.title,
+    //   youtubeDesc: this.state.meta.description,
+    // });
+    const url = 'https://www.youtube.com/watch?v=' + this.state.meta.youtube;
+    Linking.canOpenURL(url)
+      .then(supported => {
+        if (!supported) {
+          console.log("Can't handle url: " + url);
+        } else {
+          return Linking.openURL(url);
+        }
+      })
+      .catch(err => console.error('An error occurred', err));
   };
 
   onSelectedQualityChange = selectedQualityItem => {

@@ -9,6 +9,7 @@ import {
   ActivityIndicator,
   Picker,
   TouchableWithoutFeedback,
+  Linking,
 } from 'react-native';
 import ProgressScreen from '../../ReferScreens/ProgressScreen';
 import API from '../../../config/api';
@@ -207,11 +208,21 @@ export default class AndroidTV extends Component {
 
   playYoutube = () => {
     this.setState({paused: true});
-    this.props.navigation.navigate('Youtube', {
-      youtubeId: this.state.meta.youtube,
-      youtubeTitle: this.state.meta.title,
-      youtubeDesc: this.state.meta.description,
-    });
+    // this.props.navigation.navigate('Youtube', {
+    //   youtubeId: this.state.meta.youtube,
+    //   youtubeTitle: this.state.meta.title,
+    //   youtubeDesc: this.state.meta.description,
+    // });
+    const url = 'https://www.youtube.com/watch?v=' + this.state.meta.youtube;
+    Linking.canOpenURL(url)
+      .then(supported => {
+        if (!supported) {
+          console.log("Can't handle url: " + url);
+        } else {
+          return Linking.openURL(url);
+        }
+      })
+      .catch(err => console.error('An error occurred', err));
   };
 
   onSelectedChange = selectedItems => {
