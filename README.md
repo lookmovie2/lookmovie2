@@ -1,5 +1,5 @@
 ## React Native Live Stream
-Front-end clone of the Look Movie app with react native.
+Front-end of the Look Movie app with react native.
 
 ## Preview
 
