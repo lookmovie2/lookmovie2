@@ -9,7 +9,7 @@ Front-end of the Look Movie app with react native.
 ## Run
 ```sh
 git clone https://gitlab.com/superdev1008_xecure/lookmovie.git
-cd react-native-tinder-clone 
+cd lookmovie
 npm install
 react-native run-ios | react-native run-android
 ```
