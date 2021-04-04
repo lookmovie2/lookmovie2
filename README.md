@@ -3,8 +3,7 @@ Front-end of the Look Movie app with react native.
 
 ## Preview
 
-<img width="250" height="450" style="float: left" src="https://drive.google.com/uc?export=view&id=1mdV90_lxy5LFi97PMq6eajJ2IL3oWODS" />
-<img width="250" height="450" style="float: left" src="https://drive.google.com/uc?export=view&id=11x1k9ZRR-tvtFb-N49uB1g7wj29_n0es" />
+<img width="250" height="450" style="float: left" src="https://github.com/lub2code/images/blob/main/lookmovie.jpg" />
 
 ## Run
 ```sh
